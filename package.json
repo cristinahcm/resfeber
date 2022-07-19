@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@dicebear/avatars": "^4.10.3",
+    "@dicebear/croodles": "^4.10.3"
+  }
+}
