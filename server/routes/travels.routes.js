@@ -12,16 +12,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
-  try {
-    const travel = await Travel.findById(req.params.id);
-    return res.status(200).json(travel);
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.post("/", isAuthenticated, async (req, res, next) => {
+router.post("/upload", isAuthenticated, async (req, res, next) => {
   try {
     const { dates, place, type, origin, destination, route, images } = req.body;
     const travel = await Travel.create({
@@ -39,7 +30,7 @@ router.post("/", isAuthenticated, async (req, res, next) => {
   }
 });
 
-router.put("/:id", isAuthenticated, async (req, res, next) => {
+router.put("/edit/:id", isAuthenticated, async (req, res, next) => {
   try {
     const { dates, place, type, origin, destination, route, images } = req.body;
     const travel = await Travel.findByIdAndUpdate(
@@ -61,7 +52,16 @@ router.put("/:id", isAuthenticated, async (req, res, next) => {
   }
 });
 
-router.delete("/:id", isAuthenticated, async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
+  try {
+    const travel = await Travel.findById(req.params.id);
+    return res.status(200).json(travel);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/delete/:id", isAuthenticated, async (req, res, next) => {
   try {
     const travel = await Travel.findByIdAndDelete(req.params.id);
     return res.status(200).json(travel);

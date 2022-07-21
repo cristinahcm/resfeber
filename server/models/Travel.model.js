@@ -1,10 +1,9 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema(
   {
     dates: {
-      type: dates,
+      type: Date,
       required: true,
     },
     place: {
@@ -12,24 +11,23 @@ const userSchema = new Schema(
       required: true,
     },
     type: {
-      enum:["Eco, Family, Friends, Only Women"],
-      required:true,
+      enum: ["Eco, Family, Friends, Only Women"],
+      required: true,
     },
     origin: {
       type: GeolocationCoordinates,
-      required:true,
+      required: true,
     },
     destination: {
       type: GeolocationCoordinates,
-      required:true,
+      required: true,
     },
     route: {
       type: String,
     },
     images: {
-        type: Image,
+      type: Image,
     },
-
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

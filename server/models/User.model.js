@@ -1,13 +1,12 @@
 const { Schema, model } = require("mongoose");
-import { createAvatar } from '@dicebear/avatars';
-import * as style from '@dicebear/avatars-identicon-sprites';
+import { createAvatar } from "@dicebear/avatars";
+import * as style from "@dicebear/avatars-identicon-sprites";
 
 let svg = createAvatar(style, {
-  seed: 'custom-seed',
+  seed: "custom-seed",
   // ... and other options
 });
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema(
   {
     username: {
@@ -27,10 +26,18 @@ const userSchema = new Schema(
       type: Image,
     },
     interests: {
-      enum: ["Aventurer", "Beach", "Culture", "Food", "Nature", "Nightlife", "Shopping"],
+      enum: [
+        "Aventurer",
+        "Beach",
+        "Culture",
+        "Food",
+        "Nature",
+        "Nightlife",
+        "Shopping",
+      ],
     },
     gender: {
-      enum:["Female","Male"]
+      enum: ["Female", "Male", "Other"],
     },
     age: {
       type: Number,

@@ -1,15 +1,15 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const commentSchema = new Schema({
+  author: { type: mongoose.Schema.Types.String, ref: "User" },
   text: {
-    type: String, 
-    maxlength: 250
+    type: String,
   },
   stars: {
-    type: Number
-  }
-})
+    type: Number,
+  },
+});
 
-const Comment = model('Comment', commentSchema);
+const Comment = model("Comment", commentSchema);
 
 module.exports = Comment;
